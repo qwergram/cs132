@@ -17,7 +17,15 @@ int main() {
 	cout << (int)"Norton" << endl;
 	// Do this instead, for more error handling related reasons
 	cout << static_cast<int>('N') << endl;
+	cout << "Enter a number: ";
 	cin >> globalIntenger;
+	// cin has overloaded bool cast
+	while (!static_cast<bool>(cin)) {
+		cout << "You need to type in a valid number!" << endl;
+		cin.clear();
+		cin.ignore(FILENAME_MAX, '\n');
+		cin >> globalIntenger;
+	}
 	// to protect the cin.get()
 	cin.ignore(FILENAME_MAX, '\n'); // skips past the number of characters or until carriage return
 	// ::globalInteger is to access the global scope of this program
